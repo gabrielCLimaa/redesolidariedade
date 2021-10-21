@@ -3,19 +3,19 @@ from uuid import uuid4
 
 class Entidade(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    cnpj = models.CharField(max_length=45, unique= True)
+    cnpj = models.CharField(max_length=45, unique= True,null=True)
     nome = models.CharField(max_length=90)
     nome_fantasia = models.CharField(max_length=45)
     endereco = models.CharField(max_length=45)
     telefone = models.CharField(max_length=45)
-    email = models.CharField(max_length=45)
+    email = models.CharField(max_length=45, unique= True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Representante(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     id_entidade = models.ForeignKey(Entidade, on_delete=models.CASCADE)
     nome = models.CharField(max_length=45)
-    cpf = models.CharField(max_length=45)
+    cpf = models.CharField(max_length=45, unique=True)
     endereco = models.CharField(max_length=45)
     observacao = models.CharField(max_length=90)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -31,7 +31,7 @@ class Usuario(models.Model):
 class Familia(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nomeChefeFamilia = models.CharField(max_length=45)
-    cpfChefeFamilia = models.CharField(max_length=45)
+    cpfChefeFamilia = models.CharField(max_length=45, unique= True)
     endereco = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -39,7 +39,7 @@ class IntegranteFamiliar(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     id_familia = models.ForeignKey(Familia, on_delete=models.CASCADE)
     nome = models.CharField(max_length=45)
-    cpf = models.CharField(max_length=45)
+    cpf = models.CharField(max_length=45, unique= True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Movimentos(models.Model):
