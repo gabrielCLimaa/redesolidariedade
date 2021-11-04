@@ -6,10 +6,6 @@ class EntidadeViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.EntidadeSerializer
     queryset = models.Entidade.objects.all()
 
-class RepresentanteViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.RepresentanteSerializer
-    queryset = models.Representante.objects.all()
-
 class UsuarioViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.UsuarioSerializer
     queryset = models.Usuario.objects.all()
@@ -25,14 +21,6 @@ class IntegranteFamiliarViewSet(viewsets.ModelViewSet):
 class MovimentosViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.MovimentosSerializer
     queryset = models.Movimentos.objects.all()
-
-class CategoriaViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.CategoriaSerializer
-    queryset = models.Categoria.objects.all()
-
-class ItensViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.ItensSerializer
-    queryset = models.Itens.objects.all()
 
 class MovimentoItensViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.MovimentoItensSerializer

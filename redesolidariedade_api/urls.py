@@ -21,14 +21,11 @@ from api.api_controll import viewsets
 route = routers.DefaultRouter()
 
 route.register(r'entidades', viewsets.EntidadeViewSet, basename='entidades')
-route.register(r'representante', viewsets.RepresentanteViewSet, basename='representante')
 route.register(r'usuario', viewsets.UsuarioViewSet, basename='usuario')
 route.register(r'movimentos', viewsets.MovimentosViewSet, basename='movimentos')
 route.register(r'familia', viewsets.FamiliaViewSet, basename='familia')
 route.register(r'integrantes_familia', viewsets.IntegranteFamiliarViewSet, basename='integrantes_familia')
 route.register(r'movimento_itens', viewsets.MovimentoItensViewSet, basename='movimentos_itens')
-route.register(r'itens', viewsets.ItensViewSet, basename='itens')
-route.register(r'categoria', viewsets.CategoriaViewSet, basename='categorias')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

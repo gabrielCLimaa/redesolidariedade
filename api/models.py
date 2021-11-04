@@ -4,25 +4,17 @@ from uuid import uuid4
 class Entidade(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     cnpj = models.CharField(max_length=45, unique= True,null=True)
-    nome = models.CharField(max_length=90)
     nome_fantasia = models.CharField(max_length=45)
+    nome_representante = models.CharField(max_length=90)
+    cpf_representante = models.CharField(max_length=11, unique=True,null=True)
     endereco = models.CharField(max_length=45)
     telefone = models.CharField(max_length=45)
     email = models.CharField(max_length=45, unique= True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-class Representante(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    id_entidade = models.ForeignKey(Entidade, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=45)
-    cpf = models.CharField(max_length=45, unique=True)
-    endereco = models.CharField(max_length=45)
-    observacao = models.CharField(max_length=90)
-    created_at = models.DateTimeField(auto_now_add=True)
-
 class Usuario(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    id_representante = models.ForeignKey(Representante, on_delete=models.CASCADE)
+    id_entidade = models.ForeignKey(Entidade, on_delete=models.CASCADE)
     papel = models.CharField(max_length=90)
     login = models.CharField(max_length=40)
     senha = models.CharField(max_length=40)
@@ -33,6 +25,10 @@ class Familia(models.Model):
     nomeChefeFamilia = models.CharField(max_length=45)
     cpfChefeFamilia = models.CharField(max_length=45, unique= True)
     endereco = models.CharField(max_length=45)
+    telefone1 = models.CharField(max_length=45)
+    telefone2 = models.CharField(max_length=45, null=True)
+    endereco = models.CharField(max_length=45)
+    numeroDeDependentes = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class IntegranteFamiliar(models.Model):
@@ -40,6 +36,7 @@ class IntegranteFamiliar(models.Model):
     id_familia = models.ForeignKey(Familia, on_delete=models.CASCADE)
     nome = models.CharField(max_length=45)
     cpf = models.CharField(max_length=45, unique= True)
+    telefone = models.CharField(max_length=45, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Movimentos(models.Model):
@@ -47,23 +44,13 @@ class Movimentos(models.Model):
     id_usuario= models.ForeignKey(Usuario, on_delete=models.CASCADE)
     id_familia = models.ForeignKey(Familia, on_delete=models.CASCADE)
     data = models.DateTimeField()
-    justifica = models.CharField(max_length=90)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-class Categoria(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    descricao = models.CharField(max_length=90)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-class Itens(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    id_categoria= models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    descricao = models.CharField(max_length=45)
+    justifica = models.CharField(max_length=90, null= True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class MovimentoItens(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     id_movimento= models.ForeignKey(Movimentos, on_delete=models.CASCADE)
-    id_itens = models.ForeignKey(Itens, on_delete=models.CASCADE)
+    nomeItem = models.CharField(max_length=45)
     quantidade = models.IntegerField()
+    descricaoItem= models.CharField(max_length=95)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -6,11 +6,6 @@ class EntidadeSerializer(serializers.ModelSerializer):
         model = models.Entidade
         fields = '__all__'
 
-class RepresentanteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Representante
-        fields = '__all__'
-
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Usuario
@@ -29,16 +24,6 @@ class IntegranteFamiliarSerializer(serializers.ModelSerializer):
 class MovimentosSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Movimentos
-        fields = '__all__'
-
-class CategoriaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Categoria
-        fields = '__all__'
-
-class ItensSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Itens
         fields = '__all__'
 
 class MovimentoItensSerializer(serializers.ModelSerializer):
