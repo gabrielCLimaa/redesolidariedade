@@ -1,15 +1,13 @@
 # redesolidariedade
-Projeto de Extensão IFSC 2021/2 - Rede Solidariedade
-Implementação inicial e de testes do projeto, rotas:
+Projeto de Extensão IFSC 2021/2 - Rede Solidariedade <br>
+Implementação inicial e de testes do projeto, rotas: <br>
+Cors added, para testes com react: default 3000 <br>
 
-{
-    "entidades": "/entidades/",
-    "representante": "/representante/",
-    "usuario": "/usuario/",
-    "movimentos": "/movimentos/",
-    "familia": "/familia/",
-    "integrantes_familia": "/integrantes_familia/",
-    "movimento_itens": "/movimento_itens/",
-    "itens": "/itens/",
-    "categoria": "/categoria/"
+{<br>
+    "entidades": "/entidades/", <br>
+    "usuario": "/usuario/", <br>
+    "movimentos": "/movimentos/",   <br>
+    "familia": "/familia/", <br>
+    "integrantes_familia": "/integrantes_familia/", <br>
+    "movimento_itens": "/movimento_itens/"  <br>
 }
